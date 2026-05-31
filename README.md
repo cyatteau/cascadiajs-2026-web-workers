@@ -23,7 +23,7 @@ The talk follows the **THREAD** checklist:
 
 ## Repository contents
 
-- `slides.html` - PowerPoint slide deck for the talk
+- `slides.pdf` - PowerPoint slide deck for the talk
 - `demo-01/` - Trigger the stutter
 - `demo-02/` - Move the work
 - `demo-03/` - Protocol, progress, and cancellation
