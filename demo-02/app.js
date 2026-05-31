@@ -13,7 +13,6 @@ const els = {
   frameGap: document.querySelector("#frameGap"),
   matches: document.querySelector("#matches"),
   heartbeat: document.querySelector(".heartbeat"),
-  log: document.querySelector("#log"),
 };
 
 let clicks = 0;
@@ -66,7 +65,6 @@ els.mainBtn.addEventListener("click", async () => {
     "Main-thread version finished. Notice how the UI had to wait.",
     "warning",
   );
-  log(`main thread done in ${elapsed} ms`);
 });
 
 // STEP 2:
@@ -76,34 +74,29 @@ els.workerBtn.addEventListener("click", () => {
   resetFrameGap();
 
   setStatus("Worker button is here, but I have not wired it yet.", "warning");
-  log("worker path not wired yet");
 });
 
-// els.workerBtn.addEventListener('click', () => {
+// els.workerBtn.addEventListener("click", () => {
 //   resetFrameGap();
 
 //   const id = `req-${++requestId}`;
 
 //   const message = {
-//     type: 'ANALYZE',
+//     type: "ANALYZE",
 //     requestId: id,
-//     payload: getPayload()
+//     payload: getPayload(),
 //   };
 
-//   setStatus('Worker running. Try clicking the counter while the job runs.', '');
-//   log(`to worker: ANALYZE (${id})`);
+//   setStatus("Worker running. Try clicking the counter while the job runs.", "");
 
 //   worker.postMessage(message);
 // });
-
 
 // STEP 3:
 // Listen for the worker result here.
 
 // worker.addEventListener("message", (event) => {
-//   const { type, requestId, payload } = event.data;
-
-//   log(`from worker: ${type} (${requestId})`);
+//   const { type, payload } = event.data;
 
 //   if (type === "DONE") {
 //     els.workerElapsed.textContent = `${payload.elapsed} ms`;
@@ -111,7 +104,7 @@ els.workerBtn.addEventListener("click", () => {
 
 //     setStatus(
 //       "Worker version finished. The work still happened, but the UI kept breathing.",
-//       ""
+//       "",
 //     );
 //   }
 // });
@@ -190,10 +183,4 @@ function expensiveScore(seed, spice) {
 function setStatus(text, tone) {
   els.status.className = `status ${tone || ""}`;
   els.status.textContent = text;
-}
-
-function log(text) {
-  const row = document.createElement("div");
-  row.textContent = `${new Date().toLocaleTimeString()}  ${text}`;
-  els.log.prepend(row);
 }
